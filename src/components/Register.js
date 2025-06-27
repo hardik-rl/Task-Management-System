@@ -6,6 +6,7 @@ import FormControl from "@/shared/FormControl";
 import HeadingLg from "@/shared/HeadingLg";
 import Button from "@/shared/Button";
 import NavigationLink from "@/shared/NavigationLink";
+import { LoadingIcon } from "@/shared/Icon";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -90,7 +91,7 @@ export default function RegisterPage() {
           <div>
             <FormControl
               label="Confirm Password"
-              name="password"
+              name="confirm"
               type="password"
               value={form.confirm}
               onChange={handleChange}
@@ -99,12 +100,18 @@ export default function RegisterPage() {
             // error={errors.password}
             />
           </div>
-          <Button disabled={loading}>{loading ? "Creating..." : "Register"}</Button>
+          <Button disabled={loading} className="flex items-center justify-center gap-2">
+            {loading ? (
+              <LoadingIcon />
+            ) : (
+              "Register"
+            )}
+          </Button>
         </form>
 
         <p className="text-sm text-center text-gray-600 mt-6">
           Already have an account?{" "}
-         <NavigationLink href="/login"> Login </NavigationLink>
+          <NavigationLink href="/login"> Login </NavigationLink>
         </p>
       </div>
     </div>

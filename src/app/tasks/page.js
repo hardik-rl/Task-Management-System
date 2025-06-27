@@ -1,3 +1,4 @@
+import ProtectedRoute from '@/components/ProtectedRoute';
 import TaskManagement from '@/components/TaskManagement';
 import React from 'react'
 
@@ -8,7 +9,9 @@ export const metadata = {
 
 const TaskList = () => {
     return (
-        <TaskManagement />
+        <ProtectedRoute>
+            <TaskManagement />
+        </ProtectedRoute>
     )
 }
 

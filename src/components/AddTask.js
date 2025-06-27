@@ -53,7 +53,7 @@ export default function AddTask({
       onSubmit={handleSubmit}
       className="bg-white shadow-md rounded px-6 pt-6 pb-8 w-full"
     >
-      <h2 className="text-2xl font-bold mb-6 text-blue-700">Add Task</h2>
+      <h2 className="text-2xl font-bold mb-6 text-blue-700">Create Task</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Title */}

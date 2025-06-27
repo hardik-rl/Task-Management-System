@@ -1,3 +1,4 @@
+import ProtectedRoute from '@/components/ProtectedRoute';
 import React from 'react'
 
 export const metadata = {
@@ -7,7 +8,9 @@ export const metadata = {
 
 const editNewTask = () => {
   return (
-    <div className='text-2xl'>Edit Task</div>
+    <ProtectedRoute>
+      <div className='text-2xl'>Edit Task</div>
+    </ProtectedRoute>
   )
 }
 
