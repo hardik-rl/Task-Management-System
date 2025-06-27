@@ -6,7 +6,6 @@ import FormControl from "@/shared/FormControl";
 import HeadingLg from "@/shared/HeadingLg";
 import Button from "@/shared/Button";
 import NavigationLink from "@/shared/NavigationLink";
-import { loginUser } from "@/app/api/auth";
 import { LoadingIcon } from "@/shared/Icon";
 import { toast } from "react-toastify";
 
@@ -29,16 +28,15 @@ export default function LoginComponent() {
 
     setLoading(true);
     try {
-      // const data = await loginUser(form);
-      // router.push("/tasks");
-      // localStorage.setItem("token", data.accessToken);
-      // const res = await fetch(`http://localhost:3001/users?email=${email}&password=${password}`);
-      const res = await fetch(`http://localhost:3001/users?email=${form.email}&password=${form.password}`);
+
+      const res = await fetch(`http://localhost:5000/users?email=${form.email}&password=${form.password}`);
 
       const users = await res.json();
-      
+
       if (users.length === 1) {
         localStorage.setItem("user", JSON.stringify(users[0]));
+        const accessToken = Math.random().toString(36).substring(2); // Random token
+        localStorage.setItem("token", accessToken);
         toast.success("Login Successfully!");
         router.push("/tasks");
       } else {

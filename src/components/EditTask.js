@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import AddTask from "@/components/AddTask";
+import ApiCalling from "@/shared/api/ApiCalling";
 
 export default function EditTaskPage() {
   const { id } = useParams();
@@ -11,8 +12,8 @@ export default function EditTaskPage() {
   useEffect(() => {
     const fetchTask = async () => {
       try {
-        const res = await fetch(`http://localhost:3001/tasks/${id}`);
-        const data = await res.json();
+        const res = await ApiCalling.apiCallGet(`/tasks/${id}`);
+        const data = res.data;
         setTask(data);
       } catch (err) {
         console.error("Failed to fetch task:", err);

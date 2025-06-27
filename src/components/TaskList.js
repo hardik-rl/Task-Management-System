@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Button from "@/shared/Button";
 import { AddIcon, LoadingIcon } from "@/shared/Icon";
+import ApiCalling from "@/shared/api/ApiCalling";
 
 const TaskList = () => {
   const router = useRouter();
@@ -12,8 +13,8 @@ const TaskList = () => {
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const res = await fetch("http://localhost:3001/tasks?limit=10");
-        const data = await res.json();
+        const res = await ApiCalling.apiCallGet("/tasks?limit=10");
+        const data = res.data;
         const mappedTasks = data.map((todo) => ({
           id: todo.id,
           title: todo.title,
@@ -36,9 +37,7 @@ const TaskList = () => {
   // Delete operation
   const handleDelete = async (id) => {
     try {
-      await fetch(`http://localhost:3001/tasks/${id}`, {
-        method: "DELETE",
-      });
+      await ApiCalling.apiCallDelete(`/tasks/${id}`);
       setTasks((prev) => prev.filter((task) => task.id !== id));
     } catch (error) {
       console.error("Delete failed", error);
@@ -60,7 +59,7 @@ const TaskList = () => {
           Add Task
         </Button>
       </div>
-      <div className="overflow-x-auto rounded-lg shadow-md border border-gray-200">
+      <div className="overflow-x-auto max-h-[600px] rounded-lg shadow-md border border-gray-200">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-100">
             <tr>

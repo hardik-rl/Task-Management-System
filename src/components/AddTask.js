@@ -1,4 +1,5 @@
 "use client";
+import ApiCalling from "@/shared/api/ApiCalling";
 import Button from "@/shared/Button";
 import FormControl from "@/shared/FormControl";
 import { useRouter } from "next/navigation";
@@ -50,18 +51,15 @@ export default function AddTask({
     try {
       const isEditMode = !!initialData;
 
-      const res = await fetch(
-        `http://localhost:3001/tasks${isEditMode ? `/${initialData.id}` : ""}`,
-        {
-          method: isEditMode ? "PUT" : "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(form),
-        }
-      );
+      const res = `/tasks${isEditMode ? `/${initialData.id}` : ""}`;
 
-      if (!res.ok) throw new Error(`${isEditMode ? "Update" : "Create"} failed`);
+      if (isEditMode) {
+        await ApiCalling.apiCallPut(res, form);
+      } else {
+        await ApiCalling.apiCallPost(res, form);
+      }
+
+      // if (!res.ok) throw new Error(`${isEditMode ? "Update" : "Create"} failed`);
 
       router.push("/tasks");
       toast.success(`Task ${isEditMode ? "Update" : "Created"} Successfully!`);
