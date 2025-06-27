@@ -7,6 +7,7 @@ import HeadingLg from "@/shared/HeadingLg";
 import Button from "@/shared/Button";
 import NavigationLink from "@/shared/NavigationLink";
 import { LoadingIcon } from "@/shared/Icon";
+import { toast } from "react-toastify";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -26,7 +27,7 @@ export default function RegisterPage() {
     }
 
     if (form.password !== form.confirm) {
-      console.log("Passwords do not match.");
+      toast.error("Passwords do not match");
       return;
     }
 
@@ -46,10 +47,13 @@ export default function RegisterPage() {
       if (res.ok) {
         console.log("Registered successfully! Please login.");
         router.push("/login");
+        toast.success("Register Successfully!");
       } else {
+        toast.error("Registration failed", data.message);
         console.log(data.message || "Registration failed.");
       }
     } catch (err) {
+      toast.error("Something went wrong", err);
       console.log("Something went wrong.");
     } finally {
       setLoading(false);

@@ -3,6 +3,7 @@
 import { AddIcon, ListIcon, LoginIcon, LogoutIcon } from "@/shared/Icon";
 import { cn } from "@/shared/utils";
 import { usePathname, useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function Sidebar() {
     const router = useRouter();
@@ -14,6 +15,7 @@ export default function Sidebar() {
     const handleLogout = () => {
         localStorage.removeItem("token");
         router.push("/login");
+        toast.success("Logout Successfully!");
     };
 
     return (

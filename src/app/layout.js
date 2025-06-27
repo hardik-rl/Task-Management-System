@@ -43,6 +43,7 @@ import "../styles/globals.css";
 import Sidebar from "@/components/Sidebar";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { usePathname } from "next/navigation";
+import { ToastContainer } from "react-toastify";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -82,6 +83,7 @@ export default function RootLayout({ children }) {
       <body className={`${poppins.variable} antialiased`}>
         <AuthProvider>
           <LayoutWithSidebar>{children}</LayoutWithSidebar>
+          <ToastContainer />
         </AuthProvider>
       </body>
     </html>

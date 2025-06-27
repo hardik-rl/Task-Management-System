@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 export const loginUser = async ({ username, email, password }) => {
   try {
     const res = await fetch("https://dummyjson.com/auth/login", {
@@ -9,15 +11,14 @@ export const loginUser = async ({ username, email, password }) => {
     });
 
     const data = await res.json();
-    console.log("Login API Response:", data);
-
+    toast.success("Login Successfully!");
     if (!res.ok) {
       throw new Error(data.message || "Login failed");
     }
 
     return data;
   } catch (error) {
-    console.error("Login error:", error.message);
+    toast.error(error.message);
     throw error;
   }
 };

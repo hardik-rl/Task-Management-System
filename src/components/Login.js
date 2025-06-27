@@ -22,18 +22,15 @@ export default function LoginComponent() {
     e.preventDefault();
 
     if (!form.username || !form.password) {
-      console.log("Please fill all fields.");
+      toast.success("Please fill all fields.");
       return;
     }
 
     setLoading(true);
     try {
-
       const data = await loginUser(form);
-
       router.push("/tasks");
       localStorage.setItem("token", data.accessToken);
-
     } catch (err) {
       console.log(err, "Something went wrong");
     } finally {

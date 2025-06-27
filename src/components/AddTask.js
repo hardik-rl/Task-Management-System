@@ -2,6 +2,7 @@
 import Button from "@/shared/Button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function AddTask({
   initialData,
@@ -62,8 +63,10 @@ export default function AddTask({
       if (!res.ok) throw new Error(`${isEditMode ? "Update" : "Create"} failed`);
 
       router.push("/tasks");
+      toast.success(`Task ${isEditMode ? "Update" : "Created"} Successfully!`);
     } catch (error) {
       console.error("Submit error:", error);
+      toast.error("Error", error)
     }
   };
 
