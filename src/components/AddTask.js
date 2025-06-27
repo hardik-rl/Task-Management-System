@@ -42,41 +42,39 @@ export default function AddTask({
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (!validate()) return;
+    e.preventDefault();
+    if (!validate()) return;
 
-  try {
-    const isEditMode = !!initialData;
+    try {
+      const isEditMode = !!initialData;
 
-    const res = await fetch(
-      `http://localhost:3001/tasks${isEditMode ? `/${initialData.id}` : ""}`,
-      {
-        method: isEditMode ? "PUT" : "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      }
-    );
+      const res = await fetch(
+        `http://localhost:3001/tasks${isEditMode ? `/${initialData.id}` : ""}`,
+        {
+          method: isEditMode ? "PUT" : "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        }
+      );
 
-    if (!res.ok) throw new Error(`${isEditMode ? "Update" : "Create"} failed`);
+      if (!res.ok) throw new Error(`${isEditMode ? "Update" : "Create"} failed`);
 
-    router.push("/tasks");
-  } catch (error) {
-    console.error("Submit error:", error);
-  }
-};
-
+      router.push("/tasks");
+    } catch (error) {
+      console.error("Submit error:", error);
+    }
+  };
 
   return (
     <form
       onSubmit={handleSubmit}
       className="bg-white shadow-md rounded px-6 pt-6 pb-8 w-full"
     >
-      <h2 className="text-2xl font-bold mb-6 text-blue-700">Create Task</h2>
+      <h2 className="text-2xl font-bold mb-6 text-blue-700">{!!initialData ? "Edit" : "Create"} Task</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {/* Title */}
         <div className="mb-4">
           <label className="block text-sm font-semibold text-gray-700 mb-1">
             Title
@@ -95,7 +93,6 @@ export default function AddTask({
           )}
         </div>
 
-        {/* Status */}
         <div className="mb-4">
           <label className="block text-sm font-semibold text-gray-700 mb-1">
             Status
@@ -107,12 +104,10 @@ export default function AddTask({
             className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
           >
             <option>To Do</option>
-            {/* <option>In Progress</option> */}
             <option>Completed</option>
           </select>
         </div>
 
-        {/* Due Date */}
         <div className="mb-6">
           <label className="block text-sm font-semibold text-gray-700 mb-1">
             Due Date
@@ -130,7 +125,6 @@ export default function AddTask({
           )}
         </div>
 
-        {/* Description */}
         <div className="md:col-span-3 mb-4">
           <label className="block text-sm font-semibold text-gray-700 mb-1">
             Description

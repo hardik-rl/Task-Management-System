@@ -90,18 +90,18 @@ const TaskList = () => {
                   {new Date(task.due_date).toLocaleDateString()}
                 </td>
                 <td className="px-4 py-2 text-sm text-right flex justify-end gap-2">
-                  <button
+                  <Button
                     onClick={() => router.push(`/tasks/${task.id}`)}
-                    className="text-yellow-600 hover:underline cursor-pointer"
+                    className="!w-[60px]"
                   >
                     Edit
-                  </button>
-                  <button
+                  </Button>
+                  <Button
                     onClick={() => handleDelete(task.id)}
-                    className="text-red-600 hover:underline"
+                    className="!bg-red-600 !w-[60px]"
                   >
                     Delete
-                  </button>
+                  </Button>
                 </td>
               </tr>
             ))}
