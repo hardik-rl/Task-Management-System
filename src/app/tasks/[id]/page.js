@@ -1,17 +1,21 @@
+"use client"
+
+import EditTaskPage from '@/components/EditTask';
 import ProtectedRoute from '@/components/ProtectedRoute';
+import withAuth from '@/hoc/withAuth';
 import React from 'react'
 
-export const metadata = {
-  title: "Task Management System | Edit Task ",
-  description: "Modify your task details such as title, status, or due date.",
-};
+// export const metadata = {
+//   title: "Task Management System | Edit Task ",
+//   description: "Modify your task details such as title, status, or due date.",
+// };
 
-const editNewTask = () => {
+const EditNewTask = () => {
   return (
-    <ProtectedRoute>
-      <div className='text-2xl'>Edit Task</div>
-    </ProtectedRoute>
+    // <ProtectedRoute>
+      <EditTaskPage />
+    // {/* </ProtectedRoute> */}
   )
 }
 
-export default editNewTask
+export default withAuth(EditNewTask)

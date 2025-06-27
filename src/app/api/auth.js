@@ -21,14 +21,3 @@ export const loginUser = async ({ username, email, password }) => {
     throw error;
   }
 };
-
-export const logoutUser = () => {
-  localStorage.removeItem("token");
-};
-
-// export const isUserAuthenticated = () => {
-//   if (typeof window !== "undefined") {
-//     return !!localStorage.getItem("token");
-//   }
-//   return false;
-// };

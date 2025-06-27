@@ -19,12 +19,14 @@ export function AuthProvider({ children }) {
   const login = (jwt) => {
     localStorage.setItem("token", jwt);
     setToken(jwt);
-    setIsAuthenticated(!!tokenGet);
+    setIsAuthenticated(true);
+    // setIsAuthenticated(!!tokenGet);
   };
 
   const logout = () => {
     localStorage.removeItem("token");
     setToken(null);
+    setIsAuthenticated(false);
   };
 
   return (

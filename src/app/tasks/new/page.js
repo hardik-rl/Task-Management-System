@@ -1,18 +1,21 @@
+"use client"
+
 import AddTask from '@/components/AddTask';
 import ProtectedRoute from '@/components/ProtectedRoute';
+import withAuth from '@/hoc/withAuth';
 import React from 'react'
 
-export const metadata = {
-  title: "Task Management System | Create Task",
-  description: "Add a new task to your task list with due date and status.",
-};
+// export const metadata = {
+//   title: "Task Management System | Create Task",
+//   description: "Add a new task to your task list with due date and status.",
+// };
 
 const newTask = () => {
   return (
-    <ProtectedRoute>
+    // <ProtectedRoute>
       <AddTask />
-    </ProtectedRoute>
+    // {/* </ProtectedRoute> */}
   )
 }
 
-export default newTask
+export default withAuth(newTask)
