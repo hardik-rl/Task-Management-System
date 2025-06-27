@@ -2,12 +2,15 @@
 
 import { AddIcon, ListIcon, LoginIcon, LogoutIcon } from "@/shared/Icon";
 import { cn } from "@/shared/utils";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 export default function Sidebar() {
     const router = useRouter();
     const pathname = usePathname();
+    const [user, setUser] = useState(null);
 
     const isActive = (path) =>
         pathname === path ? "bg-blue-100 text-blue-700 font-medium" : "";
@@ -15,8 +18,17 @@ export default function Sidebar() {
     const handleLogout = () => {
         localStorage.removeItem("token");
         router.push("/login");
+        localStorage.removeItem("user");
+
         toast.success("Logout Successfully!");
     };
+
+    useEffect(() => {
+        const userData = localStorage.getItem("user");
+        if (userData) {
+            setUser(JSON.parse(userData));
+        }
+    }, []);
 
     return (
         <aside className="h-screen w-64 bg-white border-r border-gray-200 p-6 hidden md:block">
@@ -51,6 +63,24 @@ export default function Sidebar() {
                 >
                     <LogoutIcon />  Logout
                 </button>
+
+                <div className="mt-4">
+                    <button
+                        className="flex gap-2 items-center text-left px-3 py-2 cursor-pointer rounded hover:bg-blue-50 transition"
+                    >
+                        <Image
+                            src="https://docs.material-tailwind.com/img/face-2.jpg"
+                            alt="avatar"
+                            priority
+                            width={20}
+                            height={20}
+                            className="relative inline-block h-9 w-9 !rounded-full object-cover object-center"
+                        />
+                        {user && (
+                            <span className="text-xs">{user.email}</span>
+                        )}
+                    </button>
+                </div>
             </nav>
         </aside>
     );
