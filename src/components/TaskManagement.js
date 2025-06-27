@@ -1,4 +1,5 @@
 "use client";
+import Button from "@/shared/Button";
 import { AddIcon } from "@/shared/Icon";
 import { useRouter } from "next/navigation";
 import React from 'react'
@@ -49,12 +50,9 @@ const TaskManagement = () => {
   }
   return (
     <section>
-      <button
-        onClick={() => router.push("/tasks/new")}
-        className={
-          "text-left text-sm flex gap-1 rounded items-center px-3 py-2 mb-4 cursor-pointer border hover:bg-blue-50 transition"}>
-        <AddIcon />Add Task
-      </button>
+      <div className="max-w-32 mb-8 ml-auto">
+        <Button className="flex gap-2 justify-center items-center" onClick={() => router.push("/tasks/new")}><AddIcon />Add Task</Button>
+      </div>
       <div className="overflow-x-auto rounded-lg shadow-md border border-gray-200">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-100">

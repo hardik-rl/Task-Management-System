@@ -3,6 +3,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import FormControl from "@/shared/FormControl";
+import HeadingLg from "@/shared/HeadingLg";
+import Button from "@/shared/Button";
+import NavigationLink from "@/shared/NavigationLink";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -55,9 +58,7 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-        <h1 className="text-3xl font-bold text-center text-blue-600 mb-6">
-          Create an Account
-        </h1>
+        <HeadingLg text="Create an Account" />
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -98,21 +99,12 @@ export default function RegisterPage() {
             // error={errors.password}
             />
           </div>
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full cursor-pointer bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition disabled:opacity-60"
-          >
-            {loading ? "Creating..." : "Register"}
-          </button>
+          <Button disabled={loading}>{loading ? "Creating..." : "Register"}</Button>
         </form>
 
         <p className="text-sm text-center text-gray-600 mt-6">
           Already have an account?{" "}
-          <a href="/login" className="text-blue-600 hover:underline">
-            Login
-          </a>
+         <NavigationLink href="/login"> Login </NavigationLink>
         </p>
       </div>
     </div>

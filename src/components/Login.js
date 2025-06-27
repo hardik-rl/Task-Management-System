@@ -1,19 +1,11 @@
-// import React from 'react'
-
-// const Login = () => {
-//   return (
-//     <div>Login</div>
-//   )
-// }
-
-// export default Login
-
 "use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import FormControl from "@/shared/FormControl";
-// import toast from "react-hot-toast";
+import HeadingLg from "@/shared/HeadingLg";
+import Button from "@/shared/Button";
+import NavigationLink from "@/shared/NavigationLink";
 
 export default function Login() {
     const router = useRouter();
@@ -59,10 +51,7 @@ export default function Login() {
     return (
         <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
             <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-                <h1 className="text-3xl font-bold text-center text-blue-600 mb-6">
-                    Login
-                </h1>
-
+                <HeadingLg text="Login" />
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
                         <FormControl
@@ -89,21 +78,12 @@ export default function Login() {
                         // error={errors.password}
                         />
                     </div>
-
-                    <button
-                        type="submit"
-                        disabled={loading}
-                        className="w-full cursor-pointer bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition disabled:opacity-60"
-                    >
-                        {loading ? "Logging in..." : "Login"}
-                    </button>
+                    <Button disabled={loading}>{loading ? "Logging in..." : "Login"}</Button>
                 </form>
 
                 <p className="text-sm text-center text-gray-600 mt-6">
-                    Don’t have an account?{" "}
-                    <a href="/register" className="text-blue-600 hover:underline">
-                        Register
-                    </a>
+                    Don’t have an account?
+                    <NavigationLink href="/register"> Register </NavigationLink>
                 </p>
             </div>
         </div>
