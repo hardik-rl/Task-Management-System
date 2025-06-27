@@ -8,10 +8,11 @@ import Button from "@/shared/Button";
 import NavigationLink from "@/shared/NavigationLink";
 import { loginUser } from "@/app/api/auth";
 import { LoadingIcon } from "@/shared/Icon";
+import { toast } from "react-toastify";
 
 export default function LoginComponent() {
   const router = useRouter();
-  const [form, setForm] = useState({ username: "", email: "", password: "" });
+  const [form, setForm] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -21,16 +22,29 @@ export default function LoginComponent() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!form.username || !form.password) {
-      toast.success("Please fill all fields.");
+    if (!form.email || !form.password) {
+      toast.error("Please fill all fields.");
       return;
     }
 
     setLoading(true);
     try {
-      const data = await loginUser(form);
-      router.push("/tasks");
-      localStorage.setItem("token", data.accessToken);
+      // const data = await loginUser(form);
+      // router.push("/tasks");
+      // localStorage.setItem("token", data.accessToken);
+      // const res = await fetch(`http://localhost:3001/users?email=${email}&password=${password}`);
+      const res = await fetch(`http://localhost:3001/users?email=${form.email}&password=${form.password}`);
+
+      const users = await res.json();
+      
+      if (users.length === 1) {
+        localStorage.setItem("user", JSON.stringify(users[0]));
+        toast.success("Login Successfully!");
+        router.push("/tasks");
+      } else {
+        toast.error("Invalid credentials");
+      }
+
     } catch (err) {
       console.log(err, "Something went wrong");
     } finally {
@@ -43,7 +57,7 @@ export default function LoginComponent() {
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
         <HeadingLg text="Login" />
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
+          {/* <div>
             <FormControl
               label="Name"
               name="username"
@@ -54,7 +68,7 @@ export default function LoginComponent() {
               required
             // error={errors.email}
             />
-          </div>
+          </div> */}
 
           <div>
             <FormControl

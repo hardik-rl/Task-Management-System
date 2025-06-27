@@ -2,7 +2,7 @@
 
 import EditTaskPage from '@/components/EditTask';
 import ProtectedRoute from '@/components/ProtectedRoute';
-import withAuth from '@/hoc/withAuth';
+// import withAuth from '@/hoc/withAuth';
 import React from 'react'
 
 // export const metadata = {
@@ -18,4 +18,4 @@ const EditNewTask = () => {
   )
 }
 
-export default withAuth(EditNewTask)
+export default EditNewTask

@@ -33,25 +33,41 @@ export default function RegisterPage() {
 
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:3001/auth/register", {
+      // const res = await fetch("http://localhost:3001/auth/register", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({
+      //     email: form.email,
+      //     password: form.password,
+      //   }),
+      // });
+
+      // const data = await res.json();
+
+      // if (res.ok) {
+      //   console.log("Registered successfully! Please login.");
+      // router.push("/login");
+      // toast.success("Register Successfully!");
+      // } else {
+      //   toast.error("Registration failed", data.message);
+      //   console.log(data.message || "Registration failed.");
+      // }
+      const res = await fetch("http://localhost:3001/users?email=" + form.email);
+      const existingUsers = await res.json();
+
+      if (existingUsers.length > 0) {
+        // alert("User already exists!");
+        toast.error("User already exists!");
+        return;
+      }
+
+      await fetch("http://localhost:3001/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: form.email,
-          password: form.password,
-        }),
+        body: JSON.stringify(form),
       });
-
-      const data = await res.json();
-
-      if (res.ok) {
-        console.log("Registered successfully! Please login.");
-        router.push("/login");
-        toast.success("Register Successfully!");
-      } else {
-        toast.error("Registration failed", data.message);
-        console.log(data.message || "Registration failed.");
-      }
+      router.push("/login");
+      toast.success("Register Successfully!");
     } catch (err) {
       toast.error("Something went wrong", err);
       console.log("Something went wrong.");

@@ -1,4 +1,24 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "email": "admin@example.com",
+      "password": "admin123"
+    },
+    {
+      "id": "9500",
+      "email": "test@mailinator.com",
+      "password": "123456",
+      "confirm": "123456"
+    },
+    {
+      "id": "de2b",
+      "email": "hardik@mailinator.com",
+      "password": "123",
+      "confirm": "123"
+    }
+  ],
   "tasks": [
     {
       "id": "fbda",
@@ -48,6 +68,13 @@
       "description": "Fuga Fugit in corp",
       "status": "To Do",
       "due_date": "1973-02-09"
+    },
+    {
+      "id": "41e4",
+      "title": "Excepteur qui sint 11",
+      "description": "Voluptatem iure est",
+      "status": "Completed",
+      "due_date": "1998-11-30"
     }
   ]
 }

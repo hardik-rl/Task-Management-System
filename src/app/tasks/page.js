@@ -1,6 +1,6 @@
 "use client"
 import TaskList from '@/components/TaskList';
-import withAuth from '@/hoc/withAuth';
+// import withAuth from '@/hoc/withAuth';
 import React from 'react'
 
 // export const metadata = {
@@ -16,4 +16,4 @@ const TaskListPage = () => {
     )
 }
 
-export default withAuth(TaskListPage)
+export default TaskListPage
