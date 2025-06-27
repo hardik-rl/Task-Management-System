@@ -1,12 +1,13 @@
 "use client";
 import Button from "@/shared/Button";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function AddTask({
-  onSubmit,
   initialData,
   submitLabel = "Save Task",
 }) {
+  const router = useRouter();
   const [form, setForm] = useState(
     initialData || {
       title: "",
@@ -40,13 +41,32 @@ export default function AddTask({
     setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!validate()) return;
 
-    if (!validate()) return;
+  try {
+    const isEditMode = !!initialData;
 
-    onSubmit(form);
-  };
+    const res = await fetch(
+      `http://localhost:3001/tasks${isEditMode ? `/${initialData.id}` : ""}`,
+      {
+        method: isEditMode ? "PUT" : "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      }
+    );
+
+    if (!res.ok) throw new Error(`${isEditMode ? "Update" : "Create"} failed`);
+
+    router.push("/tasks");
+  } catch (error) {
+    console.error("Submit error:", error);
+  }
+};
+
 
   return (
     <form
@@ -87,7 +107,7 @@ export default function AddTask({
             className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
           >
             <option>To Do</option>
-            <option>In Progress</option>
+            {/* <option>In Progress</option> */}
             <option>Completed</option>
           </select>
         </div>

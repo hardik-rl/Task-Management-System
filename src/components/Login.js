@@ -7,7 +7,6 @@ import HeadingLg from "@/shared/HeadingLg";
 import Button from "@/shared/Button";
 import NavigationLink from "@/shared/NavigationLink";
 import { loginUser } from "@/app/api/auth";
-import { cn } from "@/shared/utils";
 import { LoadingIcon } from "@/shared/Icon";
 
 export default function LoginComponent() {
