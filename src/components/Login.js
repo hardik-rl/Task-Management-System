@@ -31,11 +31,11 @@ export default function LoginComponent() {
 
     setLoading(true);
     try {
-      // const res = await ApiCalling.apiCallGet(`/users?email=${form.email}`);
-      // const users = res.data;
-          const res = await fetch(`/api/users?email=${form.email}`);
-    const users = await res.json();
-      console.log(users, "users");
+      const res = await ApiCalling.apiCallGet(`/users?email=${form.email}`);
+      const users = res.data;
+    //       const res = await fetch(`/api/users?email=${form.email}`);
+    // const users = await res.json();
+      // console.log(users, "users");
       
 
       if (users.length === 0) {
