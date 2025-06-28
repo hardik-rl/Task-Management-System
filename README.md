@@ -39,3 +39,9 @@ json-server --watch db.json --port 5000
 
 🚀 Live App: https://task-manager-app.vercel.app
 
+
+⚙️ Set Up Environment Variables
+
+create .env file root path and  add below line
+
+NEXT_PUBLIC_API_URL=http://localhost:5000

@@ -52,62 +52,6 @@
       "due_date": "2025-06-17"
     },
     {
-      "id": "1135",
-      "title": "Id distinctio Est 2024",
-      "description": "Possimus delectus 2024",
-      "status": "Completed",
-      "due_date": "1970-06-27"
-    },
-    {
-      "id": "41e4",
-      "title": "Excepteur qui sint 1111",
-      "description": "Voluptatem iure 1111",
-      "status": "Completed",
-      "due_date": "1998-11-30"
-    },
-    {
-      "id": "09c3",
-      "title": "Sint labore voluptat22222",
-      "description": "Sunt eveniet et cum",
-      "status": "Completed",
-      "due_date": "2002-01-12"
-    },
-    {
-      "id": "c41d",
-      "title": "Aliquam nihil volupt",
-      "description": "Commodo doloribus ea",
-      "status": "Completed",
-      "due_date": "1979-12-09"
-    },
-    {
-      "id": "ec97",
-      "title": "Sequi quaerat ad cup",
-      "description": "Voluptates error vol",
-      "status": "To Do",
-      "due_date": "1980-11-30"
-    },
-    {
-      "id": "922a",
-      "title": "Est possimus conse111",
-      "description": "Consequatur placeat",
-      "status": "In Progress",
-      "due_date": "2023-04-20"
-    },
-    {
-      "id": "e31f",
-      "title": "Est et voluptatum do2222",
-      "description": "Ratione sed et iste 5555",
-      "status": "To Do",
-      "due_date": "2000-02-05"
-    },
-    {
-      "id": "b25b",
-      "title": "dj",
-      "description": "dsdsdsd",
-      "status": "Completed",
-      "due_date": "2025-06-28"
-    },
-    {
       "id": "a1fe",
       "title": "KaliBali",
       "description": "Bali",
@@ -120,6 +64,13 @@
       "description": "Game Development",
       "status": "In Progress",
       "due_date": "2025-06-28"
+    },
+    {
+      "id": "1e62",
+      "title": "Delopment",
+      "description": "Development + Maintance\n",
+      "status": "In Progress",
+      "due_date": "2025-06-29"
     }
   ]
 }
