@@ -31,10 +31,7 @@ export default function LoginComponent() {
 
     setLoading(true);
     try {
-      // const res = await ApiCalling.apiCallGet(`/users?email=${form.email}`);
-      const res = await fetch(`https://backend-api-task-hk.onrender.com/users?email=${form.email}`);
-      console.log(res,"res");
-      
+      const res = await ApiCalling.apiCallGet(`/users?email=${form.email}`);
       const users = res.data;
 
       if (users.length === 0) {
