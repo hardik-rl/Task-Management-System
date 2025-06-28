@@ -5,6 +5,7 @@ import Button from "@/shared/Button";
 import { AddIcon, LoadingIcon } from "@/shared/Icon";
 import ApiCalling from "@/shared/api/ApiCalling";
 import withAuth from "@/hoc/withAuth";
+import Loader from "@/shared/Loader";
 
 const TaskList = () => {
   const router = useRouter();
@@ -44,9 +45,7 @@ const TaskList = () => {
     }
   };
 
-  if (loading) return <p className="text-center mt-8">
-    <LoadingIcon />
-  </p>;
+   if (loading) return <Loader />;
 
   return (
     <section>
@@ -100,7 +99,7 @@ const TaskList = () => {
                   </Button>
                   <Button
                     onClick={() => handleDelete(task.id)}
-                    className="!bg-red-600 !w-[60px]"
+                    className="!bg-[#495057] hover:!bg-[#212529] !w-[60px]"
                   >
                     Delete
                   </Button>

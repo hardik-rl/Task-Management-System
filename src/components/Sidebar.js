@@ -57,7 +57,7 @@ export default function Sidebar({ isOpen, onClose }) {
             isActive("/tasks")
           )}
         >
-          <ListIcon /> Task Dashboard
+          <ListIcon /> Task List
         </button>
 
         <button

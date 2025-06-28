@@ -68,7 +68,7 @@ export default function LoginComponent() {
 
   return (
     <div className="bg-gray-50 flex items-center justify-center px-4">
-      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+      <div className="w-full sm:min-w-[400px] max-w-md bg-white p-8 rounded-lg shadow-md">
         <HeadingLg text="Login" />
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>

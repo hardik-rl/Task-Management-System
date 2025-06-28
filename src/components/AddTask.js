@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 
 const AddTask = ({
   initialData,
-  submitLabel = "Save Task",
+  submitLabel = "Save",
 }) => {
   const router = useRouter();
   const [form, setForm] = useState(
@@ -93,7 +93,7 @@ const AddTask = ({
             name="status"
             value={form.status}
             onChange={handleChange}
-            className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md transition duration-200 ease-in-out hover:border-blue-500 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
           >
             <option>To Do</option>
             <option>In Progress</option>
@@ -101,22 +101,16 @@ const AddTask = ({
           </select>
         </div>
 
-        <div className="mb-6">
-          <label className="block text-sm font-semibold text-gray-700 mb-1">
-            Due Date
-          </label>
-          <input
-            type="date"
-            name="due_date"
-            value={form.due_date}
-            onChange={handleChange}
-            className={`w-full border rounded px-3 py-2 focus:outline-none focus:ring ${errors.due_date ? "border-red-500" : "focus:ring-blue-300"
-              }`}
-          />
-          {errors.due_date && (
-            <p className="text-red-500 text-sm mt-1">{errors.due_date}</p>
-          )}
-        </div>
+        <FormControl
+          label="Due Date"
+          name="due_date"
+          type="date"
+          value={form.due_date}
+          onChange={handleChange}
+          placeholder="Enter Your Email"
+          // required
+          error={errors.due_date}
+        />
 
         <div className="md:col-span-3 mb-4">
           <label className="block text-sm font-semibold text-gray-700 mb-1">
@@ -127,18 +121,18 @@ const AddTask = ({
             value={form.description}
             onChange={handleChange}
             rows={3}
-            className={`w-full border rounded px-3 py-2 focus:outline-none focus:ring ${errors.description ? "border-red-500" : "focus:ring-blue-300"
+            className={`w-full border rounded-md border-gray-300 px-3 py-2 focus:outline-none focus:ring ${errors.description ? "border-red-500" : "focus:ring-blue-300"
               }`}
             placeholder="Task details"
           ></textarea>
           {errors.description && (
-            <p className="text-red-500 text-sm mt-1">{errors.description}</p>
+            <p className="text-sm text-red-500">{errors.description}</p>
           )}
         </div>
       </div>
       <div className="justify-end flex gap-2 items-center">
         <Button type="submit" className="!w-[120px]">{submitLabel}</Button>
-        <Button type="button" className="!w-[120px] !bg-red-600" onClick={() => router.push("/tasks")}>Cancel</Button>
+        <Button type="button" className="!w-[120px] !bg-[#495057] hover:!bg-[#212529]" onClick={() => router.push("/tasks")}>Cancel</Button>
       </div>
     </form>
   );

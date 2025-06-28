@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import AddTask from "@/components/AddTask";
 import ApiCalling from "@/shared/api/ApiCalling";
 import withAuth from "@/hoc/withAuth";
+import Loader from "@/shared/Loader";
 
 const EditTaskPage = () => {
   const { id } = useParams();
@@ -26,7 +27,7 @@ const EditTaskPage = () => {
     fetchTask();
   }, [id]);
 
-  if (loading) return <p className="text-center mt-4">Loading task...</p>;
+  if (loading) return <Loader />;
   if (!task) return <p className="text-center text-red-500">Task not found</p>;
 
   return (
