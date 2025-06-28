@@ -1,41 +1,33 @@
 "use client";
-
 import { createContext, useContext, useEffect, useState } from "react";
 
-const AuthContext = createContext(null);
+const AuthContext = createContext();
 
-export function AuthProvider({ children }) {
-  const [token, setToken] = useState(null);
+export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const tokenGet = localStorage.getItem("token");
-    setToken(tokenGet);
-    setIsAuthenticated(!!tokenGet);
+    const token = localStorage.getItem("token");
+    setIsAuthenticated(!!token);
     setLoading(false);
   }, []);
 
-  const login = (jwt) => {
-    localStorage.setItem("token", jwt);
-    setToken(jwt);
+  const login = (token) => {
+    localStorage.setItem("token", token);
     setIsAuthenticated(true);
-    // setIsAuthenticated(!!tokenGet);
   };
 
   const logout = () => {
     localStorage.removeItem("token");
-    setToken(null);
     setIsAuthenticated(false);
   };
 
   return (
-    <AuthContext.Provider value={{ token, login, logout, isAuthenticated, setIsAuthenticated, loading  }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout, setIsAuthenticated, loading }}>
       {children}
     </AuthContext.Provider>
   );
-}
-export function useAuth() {
-  return useContext(AuthContext);
-}
-// export const useAuth = () => useContext(AuthContext);
+};
+
+export const useAuth = () => useContext(AuthContext);

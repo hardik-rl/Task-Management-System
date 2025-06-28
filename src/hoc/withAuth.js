@@ -1,4 +1,3 @@
-// app/hoc/withAuth.js
 "use client";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -13,16 +12,11 @@ export default function withAuth(Component) {
       if (!loading && !isAuthenticated) {
         router.replace("/login");
       }
-    }, [isAuthenticated, loading, router]);
+    }, [isAuthenticated, loading]);
 
     if (loading) {
-      return <p>Loading...</p>; // Or a spinner
+      return <p>Loading...</p>; 
     }
-
-    if (!isAuthenticated) {
-      return null; // Or a placeholder
-    }
-
-    return <Component {...props} />;
+    return isAuthenticated ? <Component {...props} /> : null;
   };
 }

@@ -29,15 +29,6 @@
       "email": "admin3@example.com",
       "password": "123456",
       "confirm": "123456"
-    },
-    {
-      "id": "9843"
-    },
-    {
-      "id": "1951"
-    },
-    {
-      "id": "a147"
     }
   ],
   "tasks": [
@@ -120,22 +111,15 @@
     },
     {
       "id": "a1fe",
-      "title": "Kali",
-      "description": "ddd",
-      "status": "To Do",
+      "title": "KaliBali",
+      "description": "Bali",
+      "status": "Completed",
       "due_date": "2025-06-26"
     },
     {
       "id": "4296",
       "title": "Game",
       "description": "dsdsd11",
-      "status": "Completed",
-      "due_date": "2025-06-28"
-    },
-    {
-      "id": "2279",
-      "title": "hh12",
-      "description": "hhh12",
       "status": "Completed",
       "due_date": "2025-06-28"
     }

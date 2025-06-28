@@ -14,17 +14,14 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (!loading && isAuthenticated) {
-      router.replace("/tasks");
+      router.push("/tasks");
     }
-  }, [isAuthenticated, loading, router]);
+  }, [isAuthenticated, loading]);
 
   if (loading) return <p>Loading...</p>;
   if (isAuthenticated) return null;
 
   return <Login />;
-  // return (
-  //     <Login />
-  // )
 }
 
 export default LoginPage

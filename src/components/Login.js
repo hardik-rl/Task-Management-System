@@ -9,11 +9,13 @@ import NavigationLink from "@/shared/NavigationLink";
 import { LoadingIcon } from "@/shared/Icon";
 import { toast } from "react-toastify";
 import ApiCalling from "@/shared/api/ApiCalling";
+import { useAuth } from "@/app/context/AuthContext";
 
 export default function LoginComponent() {
   const router = useRouter();
   const [form, setForm] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
+  const { login } = useAuth();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -32,7 +34,7 @@ export default function LoginComponent() {
       const res = await ApiCalling.apiCallGet(`/users?email=${form.email}`);
       const users = res.data;
 
-      if (users.length === 0 || users.length === 0) {
+      if (users.length === 0) {
         toast.error("User not found");
         return;
       }
@@ -45,9 +47,12 @@ export default function LoginComponent() {
       }
 
       if (users.length === 1) {
-        localStorage.setItem("user", JSON.stringify(users[0]));
         const accessToken = Math.random().toString(36).substring(2);
         localStorage.setItem("token", accessToken);
+        localStorage.setItem("user", JSON.stringify(user));
+
+        login(accessToken);
+
         toast.success("Login Successfully!");
         router.push("/tasks");
       } else {
@@ -66,19 +71,6 @@ export default function LoginComponent() {
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
         <HeadingLg text="Login" />
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* <div>
-            <FormControl
-              label="Name"
-              name="username"
-              type="text"
-              value={form.username}
-              onChange={handleChange}
-              placeholder="Enter Your Name"
-              required
-            // error={errors.email}
-            />
-          </div> */}
-
           <div>
             <FormControl
               label="Email"
