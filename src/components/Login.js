@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import FormControl from "@/shared/FormControl";
 import HeadingLg from "@/shared/HeadingLg";
@@ -8,6 +8,7 @@ import Button from "@/shared/Button";
 import NavigationLink from "@/shared/NavigationLink";
 import { LoadingIcon } from "@/shared/Icon";
 import { toast } from "react-toastify";
+import ApiCalling from "@/shared/api/ApiCalling";
 
 export default function LoginComponent() {
   const router = useRouter();
@@ -28,14 +29,24 @@ export default function LoginComponent() {
 
     setLoading(true);
     try {
+      const res = await ApiCalling.apiCallGet(`/users?email=${form.email}`);
+      const users = res.data;
 
-      const res = await fetch(`http://localhost:5000/users?email=${form.email}&password=${form.password}`);
+      if (users.length === 0 || users.length === 0) {
+        toast.error("User not found");
+        return;
+      }
 
-      const users = await res.json();
+      const user = users[0];
+
+      if (user.password !== form.password) {
+        toast.error("Invalid password");
+        return;
+      }
 
       if (users.length === 1) {
         localStorage.setItem("user", JSON.stringify(users[0]));
-        const accessToken = Math.random().toString(36).substring(2); // Random token
+        const accessToken = Math.random().toString(36).substring(2);
         localStorage.setItem("token", accessToken);
         toast.success("Login Successfully!");
         router.push("/tasks");
