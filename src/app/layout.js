@@ -5,6 +5,7 @@ import Sidebar from "@/components/Sidebar";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { usePathname } from "next/navigation";
 import { ToastContainer } from "react-toastify";
+import { cn } from "@/shared/utils";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -20,7 +21,6 @@ const poppins = Poppins({
 //   },
 // };
 
-// ⬇️ Create a wrapper so we can use hooks inside layout
 function LayoutWithSidebar({ children }) {
   const { isAuthenticated, loading } = useAuth();
   const pathname = usePathname();
@@ -31,9 +31,9 @@ function LayoutWithSidebar({ children }) {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen overflow-hidden">
       {shouldShowSidebar && <Sidebar />}
-      <main className="flex-1 p-6 bg-gray-50">{children}</main>
+      <main className={cn(shouldShowSidebar ? "w-full md:w-[calc(100%-256px)]" : "flex-1", "p-6 bg-gray-50")}>{children}</main>
     </div>
   );
 }

@@ -1,9 +1,5 @@
-Creadential Login
+front end start cmd
+npm run dev
 
-"username": "emilys",
-"email": "emily.johnson@x.dummyjson.com",
-"password": "emilyspass",
-
-
-server cmd
+Backend server cmd
 json-server --watch db.json --port 5000

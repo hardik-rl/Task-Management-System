@@ -77,15 +77,13 @@ const AddTask = ({
     >
       <h2 className="text-2xl font-bold mb-6 text-blue-700">{!!initialData ? "Edit" : "Create"} Task</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="mb-4">
-          <FormControl label="Title"
-            name="title"
-            value={form.title}
-            placeholder="Task title"
-            error={errors.title}
-            onChange={handleChange} />
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 space-x-2">
+        <FormControl label="Title"
+          name="title"
+          value={form.title}
+          placeholder="Task title"
+          error={errors.title}
+          onChange={handleChange} />
 
         <div className="mb-4">
           <label className="block text-sm font-semibold text-gray-700 mb-1">
@@ -138,8 +136,9 @@ const AddTask = ({
           )}
         </div>
       </div>
-      <div className="max-w-40">
-        <Button>{submitLabel}</Button>
+      <div className="justify-end flex gap-2 items-center">
+        <Button type="submit" className="!w-[120px]">{submitLabel}</Button>
+        <Button type="button" className="!w-[120px] !bg-red-600" onClick={() => router.push("/tasks")}>Cancel</Button>
       </div>
     </form>
   );
