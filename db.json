@@ -1,0 +1,76 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "email": "admin@example.com",
+      "password": "admin123"
+    },
+    {
+      "id": "9500",
+      "email": "test@mailinator.com",
+      "password": "123456",
+      "confirm": "123456"
+    },
+    {
+      "id": "de2b",
+      "email": "hardik@mailinator.com",
+      "password": "123",
+      "confirm": "123"
+    },
+    {
+      "id": "beec",
+      "email": "admin2@example.com",
+      "password": "123456",
+      "confirm": "123456"
+    },
+    {
+      "id": "0923",
+      "email": "admin3@example.com",
+      "password": "123456",
+      "confirm": "123456"
+    },
+    {
+      "id": "e2fe",
+      "email": "admin5@example.com",
+      "password": "123",
+      "confirm": "123"
+    },
+    {
+      "id": "284c",
+      "email": "test111@gmail.com",
+      "password": "123",
+      "confirm": "123"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "fbda",
+      "title": "test2",
+      "description": "test",
+      "status": "To Do",
+      "due_date": "2025-06-17"
+    },
+    {
+      "id": "a1fe",
+      "title": "KaliBali",
+      "description": "Bali",
+      "status": "Completed",
+      "due_date": "2025-06-26"
+    },
+    {
+      "id": "4296",
+      "title": "Game",
+      "description": "Game Development",
+      "status": "In Progress",
+      "due_date": "2025-06-28"
+    },
+    {
+      "id": "1e62",
+      "title": "Delopment",
+      "description": "Development + Maintance\n",
+      "status": "In Progress",
+      "due_date": "2025-06-29"
+    }
+  ]
+}
