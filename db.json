@@ -88,13 +88,6 @@
       "due_date": "2023-04-20"
     },
     {
-      "id": "d670",
-      "title": "Ipsa non voluptatib",
-      "description": "Praesentium sint do",
-      "status": "Completed",
-      "due_date": "1997-09-09"
-    },
-    {
       "id": "e31f",
       "title": "Est et voluptatum do2222",
       "description": "Ratione sed et iste 5555",
@@ -109,13 +102,6 @@
       "due_date": "2025-06-28"
     },
     {
-      "id": "a6e0",
-      "title": "jk",
-      "description": "dsds",
-      "status": "To Do",
-      "due_date": "2025-06-28"
-    },
-    {
       "id": "a1fe",
       "title": "KaliBali",
       "description": "Bali",
@@ -125,7 +111,7 @@
     {
       "id": "4296",
       "title": "Game",
-      "description": "dsdsd1122",
+      "description": "Game Development",
       "status": "In Progress",
       "due_date": "2025-06-28"
     }
