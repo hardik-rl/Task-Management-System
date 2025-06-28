@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/context/AuthContext";
+import Loader from "@/shared/Loader";
 
 export default function withAuth(Component) {
   return function ProtectedRoute(props) {
@@ -15,7 +16,8 @@ export default function withAuth(Component) {
     }, [isAuthenticated, loading]);
 
     if (loading) {
-      return <p>Loading...</p>; 
+      return <Loader />
+      // return <p>Loading...</p>; 
     }
     return isAuthenticated ? <Component {...props} /> : null;
   };

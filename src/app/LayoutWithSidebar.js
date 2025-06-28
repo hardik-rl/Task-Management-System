@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { useAuth } from "@/app/context/AuthContext";
 import Sidebar from "@/components/Sidebar";
 import { cn } from "@/shared/utils";
+import Loader from "@/shared/Loader";
 
 export default function LayoutWithSidebar({ children }) {
   const { loading } = useAuth();
@@ -13,7 +14,7 @@ export default function LayoutWithSidebar({ children }) {
   const hideSidebarPaths = ["/login", "/register"];
   const shouldShowSidebar = !hideSidebarPaths.includes(pathname);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loader />;
 
   return (
     <div className="relative min-h-screen bg-gray-50 overflow-hidden flex">
@@ -44,7 +45,7 @@ export default function LayoutWithSidebar({ children }) {
       {/* Main Content */}
       <main
         className={cn(
-          "transition-all duration-300 ease-in-out p-6 w-full",
+          "p-6 w-full",
           shouldShowSidebar ? "w-full md:w-[calc(100%-256px)]" : "flex-1"
         )}
       >
