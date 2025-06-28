@@ -32,7 +32,7 @@ json-server --watch db.json --port 5000
 ⚙️ Set Up Environment Variables
 
 create .env file root path and  add below line
-NEXT_PUBLIC_API_URL=http://localhost:5000
+NEXT_PUBLIC_API_URL=https://task-management-system-sandy-mu.vercel.app/
 
 
 🌐 Deployment
