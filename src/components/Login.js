@@ -33,10 +33,6 @@ export default function LoginComponent() {
     try {
       const res = await ApiCalling.apiCallGet(`/users?email=${form.email}`);
       const users = res.data;
-    //       const res = await fetch(`/api/users?email=${form.email}`);
-    // const users = await res.json();
-      // console.log(users, "users");
-      
 
       if (users.length === 0) {
         toast.error("Invalid login credentials");
@@ -71,7 +67,7 @@ export default function LoginComponent() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+    <div className="bg-gray-50 flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
         <HeadingLg text="Login" />
         <form onSubmit={handleSubmit} className="space-y-4">

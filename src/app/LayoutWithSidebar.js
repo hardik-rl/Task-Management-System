@@ -46,7 +46,7 @@ export default function LayoutWithSidebar({ children }) {
       <main
         className={cn(
           "p-6 w-full",
-          shouldShowSidebar ? "w-full md:w-[calc(100%-256px)]" : "flex-1"
+          shouldShowSidebar ? "w-full md:w-[calc(100%-256px)]" : "flex-1 flex items-center justify-center"
         )}
       >
         {children}

@@ -1,14 +1,5 @@
 @import "tailwindcss";
 
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
-
-/* * {
-  margin: 0;
-  padding: 0;
-} */
-
 :root {
   --font-poppins: 'Poppins', sans-serif;
   --background: #ffffff;
