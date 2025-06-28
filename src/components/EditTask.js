@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import AddTask from "@/components/AddTask";
 import ApiCalling from "@/shared/api/ApiCalling";
+import withAuth from "@/hoc/withAuth";
 
-export default function EditTaskPage() {
+const EditTaskPage = () => {
   const { id } = useParams();
   const [task, setTask] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -35,3 +36,6 @@ export default function EditTaskPage() {
     />
   );
 }
+
+
+export default withAuth(EditTaskPage)

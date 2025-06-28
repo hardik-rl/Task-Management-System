@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import Button from "@/shared/Button";
 import { AddIcon, LoadingIcon } from "@/shared/Icon";
 import ApiCalling from "@/shared/api/ApiCalling";
+import withAuth from "@/hoc/withAuth";
 
 const TaskList = () => {
   const router = useRouter();
@@ -19,11 +20,11 @@ const TaskList = () => {
           id: todo.id,
           title: todo.title,
           description: todo.description,
-          status: todo.status ? "To Do" : "Completed",
+          status: todo.status,
           completed: todo.status,
-          due_date: new Date().toISOString(),
+          due_date: todo.due_date || new Date().toISOString(),
         }));
-        setTasks(mappedTasks);
+        setTasks(mappedTasks.reverse());
       } catch (error) {
         console.error("Fetch error:", error);
       } finally {
@@ -34,7 +35,6 @@ const TaskList = () => {
     fetchTodos();
   }, []);
 
-  // Delete operation
   const handleDelete = async (id) => {
     try {
       await ApiCalling.apiCallDelete(`/tasks/${id}`);
@@ -59,7 +59,7 @@ const TaskList = () => {
           Add Task
         </Button>
       </div>
-      <div className="overflow-x-auto max-h-[600px] rounded-lg shadow-md border border-gray-200">
+      <div className="overflow-x-auto rounded-lg shadow-md border border-gray-200">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-100">
             <tr>
@@ -79,7 +79,9 @@ const TaskList = () => {
                   <span
                     className={`inline-block px-2 py-1 rounded-full text-xs font-semibold ${task.status === "Completed"
                       ? "bg-green-100 text-green-700"
-                      : "bg-gray-100 text-gray-800"
+                      : task.status === "In Progress"
+                        ? "bg-yellow-100 text-yellow-800"
+                        : "bg-gray-100 text-gray-800"
                       }`}
                   >
                     {task.status}
@@ -111,4 +113,4 @@ const TaskList = () => {
   );
 };
 
-export default TaskList;
+export default withAuth(TaskList);

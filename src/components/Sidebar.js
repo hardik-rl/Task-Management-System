@@ -1,6 +1,7 @@
 "use client";
 
-import { AddIcon, ListIcon, LoginIcon, LogoutIcon } from "@/shared/Icon";
+import { useAuth } from "@/app/context/AuthContext";
+import { AddIcon, ListIcon, LogoutIcon } from "@/shared/Icon";
 import { cn } from "@/shared/utils";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
@@ -11,6 +12,7 @@ export default function Sidebar() {
     const router = useRouter();
     const pathname = usePathname();
     const [user, setUser] = useState(null);
+    const { setIsAuthenticated } = useAuth();
 
     const isActive = (path) =>
         pathname === path ? "bg-blue-100 text-blue-700 font-medium" : "";
@@ -18,8 +20,8 @@ export default function Sidebar() {
     const handleLogout = () => {
         localStorage.removeItem("token");
         router.push("/login");
+        setIsAuthenticated(false);
         localStorage.removeItem("user");
-
         toast.success("Logout Successfully!");
     };
 

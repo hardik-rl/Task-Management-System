@@ -1,4 +1,5 @@
 "use client";
+import withAuth from "@/hoc/withAuth";
 import ApiCalling from "@/shared/api/ApiCalling";
 import Button from "@/shared/Button";
 import FormControl from "@/shared/FormControl";
@@ -6,10 +7,10 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-export default function AddTask({
+const AddTask = ({
   initialData,
   submitLabel = "Save Task",
-}) {
+}) => {
   const router = useRouter();
   const [form, setForm] = useState(
     initialData || {
@@ -97,6 +98,7 @@ export default function AddTask({
             className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
           >
             <option>To Do</option>
+            <option>In Progress</option>
             <option>Completed</option>
           </select>
         </div>
@@ -142,3 +144,5 @@ export default function AddTask({
     </form>
   );
 }
+
+export default withAuth(AddTask)
