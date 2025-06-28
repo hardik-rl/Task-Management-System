@@ -35,7 +35,7 @@ export default function LoginComponent() {
       const users = res.data;
 
       if (users.length === 0) {
-        toast.error("User not found");
+        toast.error("Invalid login credentials");
         return;
       }
 
