@@ -73,7 +73,7 @@ const AddTask = ({
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white shadow-md rounded px-6 pt-6 pb-8 w-full"
+      className="bg-white shadow-md rounded px-6 pt-6 pb-8 w-full mt-12 md:mt-0"
     >
       <h2 className="text-2xl font-bold mb-6 text-blue-700">{!!initialData ? "Edit" : "Create"} Task</h2>
 

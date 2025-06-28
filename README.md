@@ -19,21 +19,22 @@ git clone https://github.com/hardik-rl/Task-Management-System
 
 
 🚀 Start the project
+
 npm i
 npm run dev
 
 
 ▶️ Backend (JSON Server)
+
 json-server --watch db.json --port 5000
-
-
-🌐 Deployment
-
-🚀 Live App: https://task-manager-app.vercel.app
 
 
 ⚙️ Set Up Environment Variables
 
 create .env file root path and  add below line
-
 NEXT_PUBLIC_API_URL=http://localhost:5000
+
+
+🌐 Deployment
+
+🚀 Live App: https://task-management-system-sandy-mu.vercel.app

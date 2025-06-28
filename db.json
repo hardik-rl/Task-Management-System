@@ -52,13 +52,6 @@
       "due_date": "2025-06-17"
     },
     {
-      "id": "a1fe",
-      "title": "KaliBali",
-      "description": "Bali",
-      "status": "Completed",
-      "due_date": "2025-06-26"
-    },
-    {
       "id": "4296",
       "title": "Game",
       "description": "Game Development",
@@ -71,6 +64,13 @@
       "description": "Development + Maintance\n",
       "status": "In Progress",
       "due_date": "2025-06-29"
+    },
+    {
+      "id": "f252",
+      "title": "Notion",
+      "description": "Notion Changes",
+      "status": "Completed",
+      "due_date": "2025-06-26"
     }
   ]
 }
