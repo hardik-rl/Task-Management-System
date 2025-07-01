@@ -11,7 +11,7 @@ export default function LayoutWithSidebar({ children }) {
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const hideSidebarPaths = ["/login", "/register"];
+  const hideSidebarPaths = ["/login", "/register", "/404"];
   const shouldShowSidebar = !hideSidebarPaths.includes(pathname);
 
   if (loading) return <Loader />;
@@ -43,14 +43,14 @@ export default function LayoutWithSidebar({ children }) {
       )}
 
       {/* Main Content */}
-      <main
+      <div
         className={cn(
           "p-6 w-full",
           shouldShowSidebar ? "w-full md:w-[calc(100%-256px)]" : "flex-1 flex items-center justify-center"
         )}
       >
         {children}
-      </main>
+      </div>
     </div>
   );
 }

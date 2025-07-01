@@ -9,7 +9,7 @@ A simple full-stack Task Management application built using **Next.js (frontend)
   - User Login & Signup (LocalStorage-based auth)
   - Task CRUD (Create, Read, Update, Delete)
   - Responsive UI with TailwindCSS
-  - Toast messages for feedback
+  - Toast messages for feedback & Custom Error handle
   - Protected Routes using AuthContext
 
 ### Backend (JSON Server on Render)

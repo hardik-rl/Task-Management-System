@@ -1,5 +1,6 @@
 "use client";
 import { useAuth } from "@/app/context/AuthContext";
+import withAuth from "@/hoc/withAuth";
 import { AddIcon, ListIcon, LogoutIcon } from "@/shared/Icon";
 import { cn } from "@/shared/utils";
 import Image from "next/image";
@@ -7,7 +8,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-export default function Sidebar({ isOpen, onClose }) {
+const Sidebar = ({ isOpen, onClose }) => {
   const router = useRouter();
   const pathname = usePathname();
   const [user, setUser] = useState(null);
@@ -95,3 +96,5 @@ export default function Sidebar({ isOpen, onClose }) {
     </aside>
   );
 }
+
+export default withAuth(Sidebar)
