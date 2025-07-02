@@ -1,5 +1,5 @@
 "use client";
-import withAuth from "@/hoc/withAuth";
+// import withAuth from "@/hoc/withAuth";
 import ApiCalling from "@/shared/api/ApiCalling";
 import Button from "@/shared/Button";
 import FormControl from "@/shared/FormControl";
@@ -138,4 +138,4 @@ const AddTask = ({
   );
 }
 
-export default withAuth(AddTask)
+export default AddTask

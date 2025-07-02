@@ -1,6 +1,6 @@
 "use client";
 import { useAuth } from "@/app/context/AuthContext";
-import withAuth from "@/hoc/withAuth";
+// import withAuth from "@/hoc/withAuth";
 import { AddIcon, ListIcon, LogoutIcon } from "@/shared/Icon";
 import { cn } from "@/shared/utils";
 import Image from "next/image";
@@ -12,7 +12,7 @@ const Sidebar = ({ isOpen, onClose }) => {
   const router = useRouter();
   const pathname = usePathname();
   const [user, setUser] = useState(null);
-  const { setIsAuthenticated } = useAuth();
+  const { setIsAuthenticated, logout } = useAuth();
 
   useEffect(() => {
     const userData = localStorage.getItem("user");
@@ -25,7 +25,7 @@ const Sidebar = ({ isOpen, onClose }) => {
     pathname === path ? "bg-blue-100 text-blue-700 font-medium" : "";
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    logout();
     localStorage.removeItem("user");
     setIsAuthenticated(false);
     toast.success("Logout Successfully!");
@@ -97,4 +97,4 @@ const Sidebar = ({ isOpen, onClose }) => {
   );
 }
 
-export default withAuth(Sidebar)
+export default Sidebar

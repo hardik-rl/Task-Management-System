@@ -48,7 +48,7 @@ export default function LoginComponent() {
 
       if (users.length === 1) {
         const accessToken = Math.random().toString(36).substring(2);
-        localStorage.setItem("token", accessToken);
+        // localStorage.setItem("token", accessToken);
         localStorage.setItem("user", JSON.stringify(user));
 
         login(accessToken);

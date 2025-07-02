@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import Button from "@/shared/Button";
 import { AddIcon, LoadingIcon } from "@/shared/Icon";
 import ApiCalling from "@/shared/api/ApiCalling";
-import withAuth from "@/hoc/withAuth";
+// import withAuth from "@/hoc/withAuth";
 import Loader from "@/shared/Loader";
 
 const TaskList = () => {
@@ -113,4 +113,4 @@ const TaskList = () => {
   );
 };
 
-export default withAuth(TaskList);
+export default TaskList;

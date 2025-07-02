@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import AddTask from "@/components/AddTask";
 import ApiCalling from "@/shared/api/ApiCalling";
-import withAuth from "@/hoc/withAuth";
+// import withAuth from "@/hoc/withAuth";
 import Loader from "@/shared/Loader";
 
 const EditTaskPage = () => {
@@ -39,4 +39,4 @@ const EditTaskPage = () => {
 }
 
 
-export default withAuth(EditTaskPage)
+export default EditTaskPage
